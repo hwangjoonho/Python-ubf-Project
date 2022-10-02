@@ -5,4 +5,5 @@ from django.shortcuts import render
 
 # index 페이지
 def index(request):
+    # 인덱스페이지에 들어갈 내용
     render
