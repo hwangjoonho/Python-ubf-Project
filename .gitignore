@@ -1,0 +1,20 @@
+# mac osx
+.DS_Store
+
+# editor
+.vscode/**
+.idea/**
+**/.idea/**
+**/.vscode/**
+
+# env
+variables.json
+**/variables.json
+
+# python
+*.pyc
+**/__pycache__/**
+**/**/__pycache__/**
+
+# gunicorn
+*.sock
