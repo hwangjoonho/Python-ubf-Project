@@ -9,21 +9,40 @@
 		<section id="content">
 			<div class="content-wrap">
 				<div class="container clearfix">
+					
+					<div class="grid-filter-wrap">
+						<!-- Grid Filter
+						============================================= -->
+						<ul class="grid-filter" data-container="#demo-gallery">
+
+							<li class="activeFilter"><a href="#" data-filter="*">모든 사진</a></li>
+							<li><a href="#" data-filter=".pf-2022">2022</a></li>
+							<li><a href="#" data-filter=".pf-2021">2021</a></li>
+							<li><a href="#" data-filter=".pf-2020">2020</a></li>
+							<li><a href="#" data-filter=".pf-2019">2019</a></li>
+							<li><a href="#" data-filter=".pf-2018">2018</a></li>
+
+						</ul><!-- .grid-filter end -->
+					</div>
+
+					<div id="demo-gallery" class="masonry-thumbs grid-container grid-4" data-big="4" data-lightbox="gallery">
+
+						<a href="{% static 'galleries/full/1.jpg' %}" data-lightbox="gallery-item" class="grid-item pf-2022"><img src="{% static 'galleries/fixed/1.jpg' %}" alt="Gallery Thumb 1"></a>
+						<a href="{% static 'galleries/full/2.jpg' %}" data-lightbox="gallery-item" class="grid-item pf-2022"><img src="{% static 'galleries/fixed/2.jpg' %}" alt="Gallery Thumb 2"></a>
+						<a href="{% static 'galleries/full/3.jpg' %}" data-lightbox="gallery-item" class="grid-item pf-2021"><img src="{% static 'galleries/fixed/3.jpg' %}" alt="Gallery Thumb 3"></a>
+                        <a href="{% static 'galleries/full/4.jpg' %}" data-lightbox="gallery-item" class="grid-item pf-2020"><img src="{% static 'galleries/fixed/4.jpg' %}" alt="Gallery Thumb 4"></a>
+                        <a href="{% static 'galleries/full/5.jpg' %}" data-lightbox="gallery-item" class="grid-item pf-2019"><img src="{% static 'galleries/fixed/5.jpg' %}" alt="Gallery Thumb 5"></a>
+                        <a href="{% static 'galleries/full/6.jpg' %}" data-lightbox="gallery-item" class="grid-item pf-2018"><img src="{% static 'galleries/fixed/6.jpg' %}" alt="Gallery Thumb 6"></a>
+                        <a href="{% static 'galleries/full/7.jpg' %}" data-lightbox="gallery-item" class="grid-item pf-2019"><img src="{% static 'galleries/fixed/7.jpg' %}" alt="Gallery Thumb 7"></a>
+                        <a href="{% static 'galleries/full/8.jpg' %}" data-lightbox="gallery-item" class="grid-item pf-2020"><img src="{% static 'galleries/fixed/8.jpg' %}" alt="Gallery Thumb 8"></a>
+                        <a href="{% static 'galleries/full/9.jpg' %}" data-lightbox="gallery-item" class="grid-item pf-2021"><img src="{% static 'galleries/fixed/9.jpg' %}" alt="Gallery Thumb 9"></a>
+                        <a href="{% static 'galleries/full/10.jpg' %}" data-lightbox="gallery-item" class="grid-item pf-2018"><img src="{% static 'galleries/fixed/10.jpg' %}" alt="Gallery Thumb 10"></a>
+					</div>
+					
+					
+					<h2></h2>
 					<h2>2022</h2>
                     <h3>11월</h3>
-
-					<div class="masonry-thumbs grid-container grid-4" data-big="4" data-lightbox="gallery">
-                        <a class="grid-item" href="{% static 'galleries/full/1.jpg' %}" data-lightbox="gallery-item"><img src="{% static 'galleries/fixed/1.jpg' %}" alt="Gallery Thumb 1"></a>
-						<a class="grid-item" href="{% static 'galleries/full/2.jpg' %}" data-lightbox="gallery-item"><img src="{% static 'galleries/fixed/2.jpg' %}" alt="Gallery Thumb 2"></a>
-						<a class="grid-item" href="{% static 'galleries/full/3.jpg' %}" data-lightbox="gallery-item"><img src="{% static 'galleries/fixed/3.jpg' %}" alt="Gallery Thumb 3"></a>
-                        <a class="grid-item" href="{% static 'galleries/full/4.jpg' %}" data-lightbox="gallery-item"><img src="{% static 'galleries/fixed/4.jpg' %}" alt="Gallery Thumb 4"></a>
-                        <a class="grid-item" href="{% static 'galleries/full/5.jpg' %}" data-lightbox="gallery-item"><img src="{% static 'galleries/fixed/5.jpg' %}" alt="Gallery Thumb 5"></a>
-                        <a class="grid-item" href="{% static 'galleries/full/6.jpg' %}" data-lightbox="gallery-item"><img src="{% static 'galleries/fixed/6.jpg' %}" alt="Gallery Thumb 6"></a>
-                        <a class="grid-item" href="{% static 'galleries/full/7.jpg' %}" data-lightbox="gallery-item"><img src="{% static 'galleries/fixed/7.jpg' %}" alt="Gallery Thumb 7"></a>
-                        <a class="grid-item" href="{% static 'galleries/full/8.jpg' %}" data-lightbox="gallery-item"><img src="{% static 'galleries/fixed/8.jpg' %}" alt="Gallery Thumb 8"></a>
-                        <a class="grid-item" href="{% static 'galleries/full/9.jpg' %}" data-lightbox="gallery-item"><img src="{% static 'galleries/fixed/9.jpg' %}" alt="Gallery Thumb 9"></a>
-                        <a class="grid-item" href="{% static 'galleries/full/10.jpg' %}" data-lightbox="gallery-item"><img src="{% static 'galleries/fixed/10.jpg' %}" alt="Gallery Thumb 10"></a>
-					</div>
 
 					<div class="divider"><i class="icon-circle"></i></div>
 				</div>
