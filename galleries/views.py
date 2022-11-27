@@ -11,3 +11,11 @@ def index(request):
         "page_title": title,
         "span" : span
     })
+
+def events(request):
+    title = "주제별 사진"
+    span = "원하는 주제를 선택하세요"
+    return render(request, 'galleries/events.html', {
+        "page_title": title,
+        "span" : span
+    })
