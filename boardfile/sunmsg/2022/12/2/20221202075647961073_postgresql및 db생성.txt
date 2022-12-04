@@ -1,0 +1,18 @@
+postgresql 만들기
+
+
+
+postgres=# create user ubfks with password '2041';
+CREATE ROLE
+postgres=# create database ubfks;
+create ubfks
+postgres=# alter role ubfks set client_encoding to 'utf8';
+ALTER ROLE
+postgres=# alter role ubfks set default_transaction_isolation to 'read committed';
+ALTER ROLE
+postgres=# alter role ubfks set timezone to 'UTC';
+ALTER ROLE
+postgres=# grant all privileges on database ubfks to ubfks;
+GRANT
+postgres=# truncate table_name;
+오류:  "ubfks" 이름의 릴레이션(relation)이 없습니다

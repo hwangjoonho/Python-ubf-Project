@@ -1,0 +1,66 @@
+1. anaconda에서 ubfks 계정생성
+
+---------------------
+1. 리눅스에서 실행했을때 : python -m venvs ubfks
+windows의 아나콘다 gui에서 ubfks 계정 생성하는것과 같다.
+
+
+--???
+리눅스 작업 시 bashshell이란?
+
+우리는 fishshell을 깔도록 하겠습니다.
+
+ - fishshell 설치
+chsh -s  경로(/usr/bin/fish)
+
+나갔다 들어오면 bashshell에서 fishshell로 바뀜
+
+기능의 차이가 있기 때문에 바꿔줬다.
+
+
+-----------------------
+
+
+mkdir workspace
+
+pip : 파이썬 패키지 관리자
+
+pip install --upgrade pip
+
+pip install django
+
+pip list : maven느낌 설치된 lib 확인
+
+python -m django --version : 장고버전확인
+
+--------------------
+
+conda activate 계정이름 = ubfks
+
+django-admin startproject ubfks
+
+startapp : 애플리케이션 생성 명령어
+python manage.py startapp ubfks
+
+
+-- db와의 연결
+python manage.py makemigration 먼저해준다. 테이블 바꼈을경우 항상한다. 테이블 변화 리로드
+스키마 생성시 새로고침 느낌
+dto가 생성되는것같다.
+
+python manage.py migrate 생성된 dto파일을 바탕으로 db에적용시켜준다.
+migrate : db에 우리 app과 동기화 : db쓸수있게 준비작업
+스키마생성했고 이걸 db에 저장시키겠다.
+자동으로 관리하는 테이블들이 생성됨
+db 싱크 맞추기
+
+--------------------------
+
+--???
+
+- setting.py에서 ALLOWED_HOSTS에 *은 전체 내컴퓨터 IP만 치면 내컴퓨터만
+
+- sudo apt install tree
+tree 까는중 - 디렉토리 트리구조 시인성 
+
+

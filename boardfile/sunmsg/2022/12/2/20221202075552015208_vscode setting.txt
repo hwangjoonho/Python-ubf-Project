@@ -1,0 +1,8 @@
+vscode setting
+
+단축키 ctrl + p
+1. python 설치
+
+2. interpreter 설정
+
+3. tab9
