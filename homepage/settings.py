@@ -146,3 +146,41 @@ LOGIN_URL = '/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+LOGGING= {
+    'version' : 1,
+    'disable_existing_loggers' : False,
+
+    # debug=True는 default
+
+    # 'filters': {
+    #     'require_debug_false': {
+    #         '()': 'django.utils.log.RequireDebugFalse',
+    #     },
+    #     'require_debug_true': {
+    #         '()': 'django.utils.log.RequireDebugTrue',
+    #     },
+    # },
+    # 'formatters': {
+    #     'django.server': {
+    #         '()': 'django.utils.log.ServerFormatter',
+    #         'format': '[{server_time}] {message}',
+    #         'style': '{',
+    #     },
+    # },
+
+    'handlers' :{
+        'console':{
+            # 'level': 'INFO',
+            # 'filters': ['require_debug_true'],
+            'class' : 'logging.StreamHandler',
+        },
+    },
+    'loggers' :{
+        'mylogger':{
+            'handlers' : ['console'],
+            'level':'INFO'
+        },
+    },
+}

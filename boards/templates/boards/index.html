@@ -117,6 +117,31 @@
                 </tbody>
               </table>
 
+              <script>
+                if(document.getElementsByTagName("td")) {
+                        
+                        const $tds = document.getElementsByTagName("td");
+                        for(let i = 1; i < $tds.length; i++) {
+                            
+                            $tds[i].onmouseenter = function() {
+                                this.parentNode.style.backgroundColor = "orangered";
+                                this.parentNode.style.cursor = "pointer";
+                            }
+                            
+                            $tds[i].onmouseout = function() {
+                                this.parentNode.style.backgroundColor = "white";
+                            }
+                            
+                            $tds[i].onclick = function() {
+                                const no = this.parentNode.children[0].innerText;
+                                location.href = "/boards/detail?boardno=" + no;
+                            }
+                            
+                        }
+                        
+                    }
+            </script>
+
 
              <div id="paging">
                 <ul class="pagination justify-content-center" style="margin-top: 2rem;">

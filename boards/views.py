@@ -1,14 +1,17 @@
 import os
 from datetime import datetime
 from django.shortcuts import render, redirect
-
 from boards.models import Board
 
 from django.core.paginator import Paginator
 
+import logging
 # Create your views here.
 
 # index 페이지
+logger = logging.getLogger('mylogger')
+
+
 def index2(request):
     # 인덱스페이지에 들어갈 내용
     Boards = Board.objects.all()
@@ -69,6 +72,16 @@ def index(request):
     # board_list 페이징 처리
     page = request.GET.get('page', '1') #GET 방식으로 정보를 받아오는 데이터
     #Paginator(분할될 객체, 페이지 당 담길 객체수)
-    paginator = Paginator(board_list, '1')
+    paginator = Paginator(board_list, '2')
     page_obj = paginator.page(page) #페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
     return render(request, 'boards/index.html', {'page_obj':page_obj}) 
+
+def detail(request):
+    # detail_board = Board.objects.get(name=request.GET.get('name'))
+    # detail_board = Board.objects.all()
+    detail_board = Board.objects.all()
+
+    print("~~~~~~~~~~~~~~~~~~~~info~~~~~~~~~~~")
+    print(detail_board)
+    context = {'detail_board':detail_board,}
+    return render(request, 'boards/boardDetail.html',context)
