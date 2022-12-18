@@ -13,6 +13,22 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="{% static 'boards/css/styles.css' %}">
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script> -->
+		<script>
+			function test() {console.log(window.location.href)}
+
+			(function(){
+
+				console.log(window.location.href)
+
+			})();
+
+			document.addEventListener("DOMContentLoaded", function(){
+
+			// Handler when the DOM is fully loaded
+
+			});
+			
+		</script>
 </head>
 	<!-- Content
 		============================================= -->
@@ -26,7 +42,18 @@
 						<div class="col-lg-7 col-md-10">
 							<div class="card shadow-sm">
 								<div class="card-header">
-									<h4 class="mb-0">Form Feilds</h4>
+										<h4 class="mb-0">
+											<span style="font-weight: bold; color :black">Form Feilds</span>
+											<div style="float: right;">
+											{% if update == 'false' %}
+											<button style=" font-size: 85%; border-style: 1px solid green; background-color:transparent;" onclick="location.href= '/boards'">목 록</button>
+											<button style=" font-size: 85%; border-style: 1px solid green; background-color:transparent;" onclick="location.href= '/boards/detail/?no='+ '{{ detail_board.boardno }}' +'&update=true'">수 정</button>
+											{% else %}
+											<button style=" font-size: 85%; border-style: 1px solid green; background-color:transparent;" onclick="location.href= '/boards'">목 록</button>
+											<!-- <button style=" font-size: 85%; border-style: 1px solid green; background-color:transparent;" onclick="location.href= '/boards/addmsg/'">수정 완료</button> -->
+											{% endif %}
+											</div>
+										</h4>
 								</div>
 								<div class="card-body">
 
@@ -41,19 +68,21 @@
 											</div>
 										</div>
 
-										<form class="mb-0" id="template-contactform" name="template-contactform" action="include/form.php" method="post" enctype="multipart/form-data">
-
+										<form class="mb-0" id="template-contactform" name="template-contactform" action="/boards/addmsg/save/" method="post" enctype="multipart/form-data">
+											{% csrf_token %}
 											<div class="row">
 
 												<div class="col-12 bottommargin-sm">
 													<!-- 세션에서 이름 가져올 예정 -->
 													<!-- label for 는 id와 연결되어있다. -->
 													<label for="detail_name">작성자<small class="text-danger">*</small></label>
-													<input type="text" id="detail_name" name="detail_name" value="" class="form-control required"  />
-												
+													<input type="text" id="detail_name" name="name" value="{{ detail_board.name }}" class="form-control required" readonly />
 													<label for="detail_title">글제목<small class="text-danger">*</small></label>
-													<input type="email" name="template-contactform-email" id="template-contactform-email" class="form-control required" value="" >
-												
+													{% if update == 'false' %}
+													<input type="text" name="title" id="template-contactform-email" class="form-control required" value="{{ detail_board.title }}" readonly>
+													{% else %}
+													<input type="text" name="title" id="template-contactform-email" class="form-control required" value="{{ detail_board.title }}" />
+													{% endif %}
 													<!-- <label for="template-contactform-password">비밀번호<small class="text-danger">*</small></label>
 													<input type="password" id="template-contactform-password" name="template-contactform-password" value="" class="form-control"  /> -->
 												</div>
@@ -318,25 +347,27 @@
 
 												<div class="col-12 bottommargin-sm">
 													<label for="template-contactform-upload">다운로드</label><br>
-													<input id="template-contactform-upload" type="file" name="template-contactform-upload[]" multiple class="file file-loading" data-show-preview="false">
-												</div>
-												<div class="col-12 bottommargin-sm">
-													<label for="template-contactform-download">다운로드</label><br>
-													<input id="template-contactform-download" type="file" name="template-contactform-download[]" multiple class="file file-writing" data-show-preview="false">
+													<!-- <input id="template-contactform-upload" type="file" name="file" multiple class="file file-loading" data-show-preview="false"> -->
 												</div>
 
 
 												<div class="col-12 bottommargin-sm">
 													<label for="template-contactform-message">글내용<small class="text-danger">*</small></label>
-													<textarea class="required form-control textarea-message" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30"></textarea>
+													{% if update == 'false' %}
+													<input type="text" value="{{ detail_board.content }}" class="required form-control textarea-message" id="te" name="content" style="height: 100px;" readonly />
+													{% else %}
+													<input type="text" value="{{ detail_board.content }}" class="required form-control textarea-message" id="te" name="content" style="height: 100px;" />
+													{% endif %}
 												</div>
 
 												<div class="col-12 d-none">
 													<input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" />
 												</div>
+												{% if update == 'true' %}
 												<div class="col-12">
-													<button type="submit" name="template-contactform-submit" class="btn btn-secondary w-100 btn-lg">Send</button>
+													<button type="submit" class="btn btn-secondary w-100 btn-lg">수정 완료</button>
 												</div>
+												{% endif %}
 
 												<input type="hidden" name="prefix" value="template-contactform-">
 

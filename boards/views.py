@@ -32,32 +32,30 @@ def msg_save(request):
     content = request.POST["content"]
     name = request.POST["name"]
 
-    board = request.FILES["board_file"]
-    print(board)
-    print("~~~~~~~~~~~~~~~~")
-    # print(board.title+"gkggk")
-    # print(board.content+"gkggk")
-    # print(board.name+"gkggk")
-    # print(board.title+"zzzzzzzsfd")
+    # if request.FILES["board_file"]:
+    #     board = request.FILES["board_file"]
 
-    
-    # 파일 저장시 이름
-    now = datetime.now()
-    folder_path = "{0}/{1}/{2}/{3}/{4}/".format('boardfile','sunmsg',now.year,now.month,now.day)
-    board_field_folder_path = "{0}/{1}/{2}/{3}/".format('sunmsg',now.year,now.month,now.day)
-    file_name = "{0}_{1}".format(now.strftime("%Y%m%d%H%M%S%f"),board.name)
-    full_path = folder_path + file_name
+    #     # 파일 저장시 이름
+    #     now = datetime.now()
+    #     folder_path = "{0}/{1}/{2}/{3}/{4}/".format('boardfile','sunmsg',now.year,now.month,now.day)
+    #     board_field_folder_path = "{0}/{1}/{2}/{3}/".format('sunmsg',now.year,now.month,now.day)
+    #     file_name = "{0}_{1}".format(now.strftime("%Y%m%d%H%M%S%f"),board.name)
+    #     full_path = folder_path + file_name
 
-    # 디렉토리 생성 체크
-    os.makedirs(folder_path,exist_ok=True)
-    # 청킹 저장
-    handle_uploaded_file(board,full_path)
+    #     # 디렉토리 생성 체크
+    #     os.makedirs(folder_path,exist_ok=True)
+    #     # 청킹 저장
+    #     handle_uploaded_file(board,full_path)
 
-    # save origin image in database
-    p = Board(title=title,content=content,name=name,boardfile=board_field_folder_path + file_name)
+    # # save origin image in database
+    #     p = Board(title=title,content=content,name=name,boardfile=board_field_folder_path + file_name)
+    # else:
+    p = Board(title=title,content=content,name=name)
+
     p.save()
+    print("여기까지완료 successfully uploaded")
 
-    return redirect('/boards')
+    return redirect('/boards/')
 
     # file 청킹 업로드 방법
 def handle_uploaded_file(f,path):
@@ -79,9 +77,43 @@ def index(request):
 def detail(request):
     # detail_board = Board.objects.get(name=request.GET.get('name'))
     # detail_board = Board.objects.all()
-    detail_board = Board.objects.all()
+    no = request.GET.get('no')
+    print(no)
+    if no != '':
+        # objects.all() objects.get 은 querySet타입으로 반환
+        # detail_board = Board.objects.filter(boardno = no)
+        # print("~~~~~~~~~~~~~s~~s~~~~~info~~~~~~~~~~~")
+        # print(detail_board)
 
-    print("~~~~~~~~~~~~~~~~~~~~info~~~~~~~~~~~")
-    print(detail_board)
-    context = {'detail_board':detail_board,}
+        # objects.get() 은 객체타입으로 반환
+        detail = Board.objects.get(boardno=no)
+        print(request.GET.get('update'))
+        print("~~~~~~~~~~~~~~~~")
+        print(detail)
+        updateyn=request.GET.get('update')
+        print("~~~~~~updateyn~~~~~~~~~~")
+        print(updateyn)
+        print(type(detail))
+        print(detail)
+        # print("~~~~~~~~~~~~~~~~")
+        # print(detail)
+
+    #     print(detail_board)
+    #     print(detail_board.values())
+    #     print("~~~~~~~~~~~~~s~~~~~~~border~~~~~~~~~~~")
+    #     print(detail_board.get('boardno   '))
+
+    # for i in detail_board.boardno:
+    #     print(i.boardno)
+    #     print("~~~~~~~~~~~~~s~~~~~~~border~~~~~~~~~~~")
+    #     print(no)
+    #     if i.boardno == no:
+    #         print('hi')
+            # print(i)
+            # board_list = i.values()
+            # print(board_list)
+    # context = {'detail_board':detail_board,}
+    context = {'detail_board':detail,'update':updateyn,}
     return render(request, 'boards/boardDetail.html',context)
+    # return render(request, 'boards/boardDetail.html',{'detail_board':detail,})
+    # return render(request, 'boards/boardDetail.html',{'detail_board':detail_board,})
